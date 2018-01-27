@@ -22,6 +22,14 @@ tt_table
 # In[ ]:
 
 #选择需要的列
-table[['secID','endDate']]
+import numpy as np
+d_table=table[['TAssets','endDate']]
+d_table['diff'] = d_table['TAssets'].shift(1) - d_table['TAssets']
+d_table.dropna(how='any')
+d_table['TAssets'].plot()
 
-#adasda
+
+# In[ ]:
+
+table.sort(['endDate'],ascending=False)
+
